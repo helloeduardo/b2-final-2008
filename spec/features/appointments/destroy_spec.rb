@@ -30,6 +30,7 @@ RSpec.describe 'On Doctor Show Page' do
 
       expect(current_path).to eq(doctor_path(@doctor_1))
 
+      expect(page).to have_content("The patient was successfully removed")
       expect(page).to_not have_content(@patient_2.name)
     end
 
