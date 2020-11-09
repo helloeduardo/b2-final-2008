@@ -15,17 +15,17 @@ RSpec.describe 'On Doctor Show Page' do
 
     it 'I see the link to remove a patient next to each patient name' do
       within "#patient-#{@patient_1.id}" do
-        expect(page).to have_content("Remove and Cancel Appointments")
+        expect(page).to have_button("Remove and Cancel Appointments")
       end
 
       within "#patient-#{@patient_2.id}" do
-        expect(page).to have_content("Remove and Cancel Appointments")
+        expect(page).to have_button("Remove and Cancel Appointments")
       end
     end
 
     it 'I can remove that patient from the doctor caseload' do
       within "#patient-#{@patient_2.id}" do
-        click_link "Remove and Cancel Appointments"
+        click_button "Remove and Cancel Appointments"
       end
 
       expect(current_path).to eq(doctor_path(@doctor_1))
@@ -36,7 +36,7 @@ RSpec.describe 'On Doctor Show Page' do
 
     it "I still see a removed patient exists on the patient index page" do
       within "#patient-#{@patient_2.id}" do
-        click_link "Remove and Cancel Appointments"
+        click_button "Remove and Cancel Appointments"
       end
 
       visit patients_path
